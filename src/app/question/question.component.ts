@@ -1,3 +1,4 @@
+import { QuestionService } from './../services/question.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
   name: string | null = '';
+  questionList: any = [];
+  currentQuestion: number = 0;
 
-  constructor() {}
+  constructor(private questionService: QuestionService) {}
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
+    this.getAllQuestions();
+  }
+
+  getAllQuestions() {
+    this.questionService
+      .getQuestionJson()
+      .subscribe((res) => (this.questionList = res.questions));
   }
 }
