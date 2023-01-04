@@ -39,7 +39,10 @@
     </div>
     <div class="options">
       <ol>
-        <li *ngFor="let option of questionList[currentQuestion]?.options">
+        <li
+          *ngFor="let option of questionList[currentQuestion]?.options"
+          (click)="selectAnswer(currentQuestion + 1, option)"
+        >
           <div class="card">{{ option.text }}</div>
         </li>
       </ol>

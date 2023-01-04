@@ -12,6 +12,8 @@ export class QuestionComponent implements OnInit {
   currentQuestion: number = 0;
   points: number = 0;
   counter: number = 60;
+  correctAnswer: number = 0;
+  wrongAnswer: number = 0;
 
   constructor(private questionService: QuestionService) {}
 
@@ -40,6 +42,18 @@ export class QuestionComponent implements OnInit {
     }
     {
       this.currentQuestion--;
+    }
+  }
+
+  selectAnswer(currentQne: number, option: any) {
+    if (option.correct) {
+      this.points += 10;
+      this.correctAnswer++;
+      this.currentQuestion++;
+    } else {
+      this.points -= 10;
+      this.currentQuestion++;
+      this.wrongAnswer++;
     }
   }
 }
