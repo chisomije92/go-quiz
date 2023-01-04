@@ -17,6 +17,7 @@ export class QuestionComponent implements OnInit {
   wrongAnswer: number = 0;
   interval$: any;
   progress: string = '0';
+  isQuizCompleted: boolean = false;
 
   constructor(private questionService: QuestionService) {}
 
@@ -50,6 +51,10 @@ export class QuestionComponent implements OnInit {
   }
 
   selectAnswer(currentQne: number, option: any) {
+    if (currentQne === this.questionList.length) {
+      this.isQuizCompleted = true;
+      this.stopCounter();
+    }
     if (option.correct) {
       this.points += 10;
       this.correctAnswer++;
