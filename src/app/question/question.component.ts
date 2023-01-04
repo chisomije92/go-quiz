@@ -16,6 +16,7 @@ export class QuestionComponent implements OnInit {
   correctAnswer: number = 0;
   wrongAnswer: number = 0;
   interval$: any;
+  progress: string = '0';
 
   constructor(private questionService: QuestionService) {}
 
@@ -52,11 +53,15 @@ export class QuestionComponent implements OnInit {
     if (option.correct) {
       this.points += 10;
       this.correctAnswer++;
-      this.currentQuestion++;
+      this.goToNextQuestion();
+      this.resetCounter();
+      this.getProgressStatus();
     } else {
-      this.points -= 10;
-      this.currentQuestion++;
       this.wrongAnswer++;
+      this.goToNextQuestion();
+      this.resetCounter();
+      this.getProgressStatus();
+      this.points -= 10;
     }
   }
 
@@ -91,5 +96,14 @@ export class QuestionComponent implements OnInit {
     this.currentQuestion = 0;
     this.points = 0;
     this.counter = 60;
+    this.progress = '0';
+  }
+
+  getProgressStatus() {
+    this.progress = (
+      (this.currentQuestion / this.questionList.length) *
+      100
+    ).toString();
+    return this.progress;
   }
 }
