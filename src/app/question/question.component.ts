@@ -10,6 +10,8 @@ export class QuestionComponent implements OnInit {
   name: string | null = '';
   questionList: any = [];
   currentQuestion: number = 0;
+  points: number = 0;
+  counter: number = 60;
 
   constructor(private questionService: QuestionService) {}
 
@@ -22,5 +24,22 @@ export class QuestionComponent implements OnInit {
     this.questionService
       .getQuestionJson()
       .subscribe((res) => (this.questionList = res.questions));
+  }
+
+  goToNextQuestion() {
+    if (this.currentQuestion >= this.questionList.length - 1) {
+      this.currentQuestion = this.questionList.length - 1;
+    } else {
+      this.currentQuestion++;
+    }
+  }
+
+  goToPreviousQuestion() {
+    if (this.currentQuestion <= 0) {
+      this.currentQuestion = 1;
+    }
+    {
+      this.currentQuestion--;
+    }
   }
 }
