@@ -43,7 +43,9 @@
           *ngFor="let option of questionList[currentQuestion]?.options"
           (click)="selectAnswer(currentQuestion + 1, option)"
         >
-          <div class="card">{{ option.text }}</div>
+          <div appChangeBg [isCorrect]="option.correct" class="card">
+            {{ option.text }}
+          </div>
         </li>
       </ol>
     </div>
