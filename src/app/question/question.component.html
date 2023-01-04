@@ -15,7 +15,7 @@
       </div>
       <div class="question-remain">
         <span style="font-style: italic"
-          >Question {{ currentQuestion + 1 }} of 9</span
+          >Question {{ currentQuestion + 1 }} of {{ questionList.length }}</span
         >
       </div>
       <div class="timer">
@@ -45,13 +45,21 @@
       </ol>
     </div>
     <div class="d-flex justify-content-between">
-      <button class="btn" (click)="goToPreviousQuestion()">
+      <button
+        [disabled]="currentQuestion == 0"
+        class="btn"
+        (click)="goToPreviousQuestion()"
+      >
         <i class="text-primary fa fa-chevron-left fa-3x" aria-hidden="true"></i>
       </button>
       <button class="btn">
         <i class="text-primary fa fa-refresh fa-3x" aria-hidden="true"></i>
       </button>
-      <button class="btn" (click)="goToNextQuestion()">
+      <button
+        [disabled]="currentQuestion >= questionList.length - 1"
+        class="btn"
+        (click)="goToNextQuestion()"
+      >
         <i
           class="text-primary fa fa-chevron-right fa-3x"
           aria-hidden="true"
