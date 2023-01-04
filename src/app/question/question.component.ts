@@ -9,6 +9,7 @@ import { interval } from 'rxjs';
 })
 export class QuestionComponent implements OnInit {
   name: string | null = '';
+  selectedOption: any;
   questionList: any = [];
   currentQuestion: number = 0;
   points: number = 0;
@@ -18,6 +19,7 @@ export class QuestionComponent implements OnInit {
   interval$: any;
   progress: string = '0';
   isQuizCompleted: boolean = false;
+  questionsAttempted: number = 0;
 
   constructor(private questionService: QuestionService) {}
 
@@ -28,14 +30,15 @@ export class QuestionComponent implements OnInit {
   }
 
   getAllQuestions() {
-    this.questionService
-      .getQuestionJson()
-      .subscribe((res) => (this.questionList = res.questions));
+    this.questionService.getQuestionJson().subscribe((res) => {
+      this.questionList = res.questions;
+    });
   }
 
-  goToNextQuestion() {
-    if (this.currentQuestion >= this.questionList.length - 1) {
-      this.currentQuestion = this.questionList.length - 1;
+  goToNextQuestion(currentQne: number) {
+    if (currentQne === this.questionList.length) {
+      //this.currentQuestion = this.questionList.length - 1;
+      this.isQuizCompleted = true;
     } else {
       this.currentQuestion++;
     }
@@ -44,34 +47,79 @@ export class QuestionComponent implements OnInit {
   goToPreviousQuestion() {
     if (this.currentQuestion <= 0) {
       this.currentQuestion = 1;
-    }
-    {
+    } else {
       this.currentQuestion--;
     }
   }
 
-  selectAnswer(currentQne: number, option: any) {
+  //checkQneStatus() {
+  //  return this.questionsAnswered.some(
+  //    (v) => v !== this.questionList[this.currentQuestion].id
+  //  );
+  //}
+
+  selectOption(option: any) {
+    this.selectedOption = option;
+    //console.log(option);
+  }
+
+  //selectAnswer(currentQne: number, option: any) {
+  //  if (currentQne === this.questionList.length) {
+  //    this.isQuizCompleted = true;
+  //    this.stopCounter();
+  //  }
+
+  //  if (option.correct) {
+  //    this.points += 10;
+  //    this.correctAnswer++;
+  //    this.questionsAnswered.push(this.questionList[this.currentQuestion].id);
+  //    setTimeout(() => {
+  //      this.goToNextQuestion();
+  //      this.resetCounter();
+  //      this.getProgressStatus();
+  //    }, 600);
+  //  } else {
+  //    this.questionsAnswered.push(this.questionList[this.currentQuestion].id);
+  //    setTimeout(() => {
+  //      this.wrongAnswer++;
+  //      this.goToNextQuestion();
+  //      this.resetCounter();
+  //      this.getProgressStatus();
+  //    }, 600);
+  //    this.points -= 10;
+  //  }
+  //  console.log(this.questionsAnswered);
+  //}
+
+  submitAnswer(currentQne: any) {
     if (currentQne === this.questionList.length) {
       this.isQuizCompleted = true;
       this.stopCounter();
     }
-    if (option.correct) {
+
+    if (this.selectedOption.correct) {
       this.points += 10;
       this.correctAnswer++;
+      this.questionsAttempted++;
       setTimeout(() => {
-        this.goToNextQuestion();
+        this.goToNextQuestion(currentQne);
         this.resetCounter();
         this.getProgressStatus();
       }, 600);
     } else {
+      this.questionsAttempted++;
       setTimeout(() => {
         this.wrongAnswer++;
-        this.goToNextQuestion();
+        this.goToNextQuestion(currentQne);
         this.resetCounter();
         this.getProgressStatus();
       }, 600);
+
       this.points -= 10;
     }
+    console.log(this.selectedOption);
+
+    this.selectedOption = '';
   }
 
   startCounter() {
