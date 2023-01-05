@@ -13,15 +13,15 @@ export class QuestionComponent implements OnInit {
   name: string | null = '';
   selectedOption: OptionModel | null = null;
   questionList!: QuestionModel[];
-  currentQuestion: number = 0;
-  points: number = 0;
-  counter: number = 40;
-  correctAnswer: number = 0;
-  wrongAnswer: number = 0;
+  currentQuestion = 0;
+  points = 0;
+  counter = 40;
+  correctAnswer = 0;
+  wrongAnswer = 0;
   interval$: any;
   progress: string = '0';
-  isQuizCompleted: boolean = false;
-  questionsAttempted: number = 0;
+  isQuizCompleted = false;
+  questionsAttempted = 0;
   isOptionCorrect = false;
   isOptionSelected = false;
 
@@ -36,9 +36,7 @@ export class QuestionComponent implements OnInit {
   shuffleArray = (array: QuestionModel[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+      [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
   };
