@@ -1,0 +1,204 @@
+{
+  "questions": [
+    {
+      "id": "a",
+      "questionText": "Which of the following signifies the end of a statement in JavaScript?",
+      "options": [
+        {
+          "text": ":"
+        },
+        {
+          "text": ";",
+          "correct": true
+        },
+        {
+          "text": "!"
+        },
+        {
+          "text": "&"
+        }
+      ],
+      "explanation": "javaScript uses a semi-colon (:) to signify the end of a statement"
+    },
+    {
+      "id": "b",
+      "questionText": "Which of the following is NOT a type used in TypeScript?",
+      "options": [
+        {
+          "text": "number"
+        },
+        {
+          "text": "string"
+        },
+        {
+          "text": "enum",
+          "correct": true
+        },
+        {
+          "text": "boolean"
+        }
+      ],
+      "explanation": "enum is not used as a type in TypeScript"
+    },
+    {
+      "id": "c",
+      "questionText": "What can be used to specify properties and methods for an object in TypeScript?",
+      "options": [
+        {
+          "text": "classes."
+        },
+        {
+          "text": "interfaces.",
+          "correct": true
+        },
+        {
+          "text": "enums."
+        },
+        {
+          "text": "async/await."
+        }
+      ],
+      "explanation": "interfaces are typically used to list the properties and methods for an object"
+    },
+    {
+      "id": "d",
+      "questionText": "How are objects copied and stored in JavaScript",
+      "options": [
+        {
+          "text": "by value"
+        },
+        {
+          "text": "by reference",
+          "correct": true
+        },
+        {
+          "text": "by imitation"
+        },
+        {
+          "text": "by similarity"
+        }
+      ],
+      "explanation": "A variable assigned to an object stores not the object itself, but its “address in memory” – in other words “a reference” to it."
+    },
+    {
+      "id": "f",
+      "questionText": "In which of these does a class take parameters?",
+      "options": [
+        {
+          "text": "constructor",
+          "correct": true
+        },
+        {
+          "text": "destructor"
+        },
+        {
+          "text": "import"
+        },
+        {
+          "text": "subscribe"
+        }
+      ],
+      "explanation": "a constructor is used by a class to take in parameters"
+    },
+    {
+      "id": "g",
+      "questionText": "Which is NOT a primitive type?",
+      "options": [
+        {
+          "text": "strings"
+        },
+        {
+          "text": "boolean"
+        },
+        {
+          "text": "numbers"
+        },
+        {
+          "text": "functions",
+          "correct": true
+        }
+      ],
+      "explanation": "Functions are first class objects hence they are not a primitive type"
+    },
+    {
+      "id": "h",
+      "questionText": "Which is NOT a type in TypeScript?",
+      "options": [
+        {
+          "text": "number"
+        },
+        {
+          "text": "float",
+          "correct": true
+        },
+        {
+          "text": "string"
+        },
+        {
+          "text": "boolean"
+        }
+      ],
+      "explanation": "Float is not a type in TypeScript. "
+    },
+    {
+      "id": "i",
+      "questionText": "Which modifier is used to prevent assignments outside of a class constructor",
+      "options": [
+        {
+          "text": "readonly",
+          "correct": true
+        },
+        {
+          "text": "private"
+        },
+        {
+          "text": "public"
+        },
+        {
+          "text": "inaccessible"
+        }
+      ],
+      "explanation": "readonly is a modifier used to outside of a class constructor"
+    },
+    {
+      "id": "j",
+      "questionText": "How is a property accessible within a class?",
+      "options": [
+        {
+          "text": "Using this.propertyName",
+          "correct": true
+        },
+        {
+          "text": "Accessors"
+        },
+        {
+          "text": "Destructuring"
+        },
+        {
+          "text": "Arrow function"
+        }
+      ],
+      "explanation": "this.propertyName is the way to access a specific property within a class"
+    },
+    {
+      "id": "i",
+      "questionText": "What clause is used to ensure that that a class satisfies a particular interface?",
+      "options": [
+        {
+          "text": "implements",
+          "correct": true
+        },
+        {
+          "text": "super"
+        },
+        {
+          "text": "accessors"
+        },
+        {
+          "text": "public"
+        }
+      ],
+      "explanation": "implements is used to ensure that a a class satisfies a particular interface"
+    }
+  ]
+}
