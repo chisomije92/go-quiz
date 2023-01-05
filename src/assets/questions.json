@@ -2,14 +2,14 @@
   "questions": [
     {
       "id": "a",
-      "questionText": "Which of the following does TypeScript use to specify types?",
+      "questionText": "Which of the following signifies the end of a statement in JavaScript?",
       "options": [
         {
-          "text": ":",
-          "correct": true
+          "text": ":"
         },
         {
-          "text": ";"
+          "text": ";",
+          "correct": true
         },
         {
           "text": "!"
@@ -18,7 +18,7 @@
           "text": "&"
         }
       ],
-      "explanation": "TS uses a colon (:) to separate the property name from the property type"
+      "explanation": "javaScript uses a semi-colon (:) to signify the end of a statement"
     },
     {
       "id": "b",
@@ -31,54 +31,54 @@
           "text": "string"
         },
         {
-          "text": "boolean"
-        },
-        {
           "text": "enum",
           "correct": true
+        },
+        {
+          "text": "boolean"
         }
       ],
       "explanation": "enum is not used as a type in TypeScript"
     },
     {
       "id": "c",
-      "questionText": "How can we specify properties and methods for an object in TypeScript?",
+      "questionText": "What can be used to specify properties and methods for an object in TypeScript?",
       "options": [
         {
-          "text": "Use classes."
+          "text": "classes."
         },
         {
-          "text": "Use interfaces.",
+          "text": "interfaces.",
           "correct": true
         },
         {
-          "text": "Use enums."
+          "text": "enums."
         },
         {
-          "text": "Use async/await."
+          "text": "async/await."
         }
       ],
       "explanation": "interfaces are typically used to list the properties and methods for an object"
     },
     {
       "id": "d",
-      "questionText": "How else can Array<number> be written in TypeScript?",
+      "questionText": "How are objects copied and stored in JavaScript",
       "options": [
         {
-          "text": "@number"
+          "text": "by value"
         },
         {
-          "text": "number[]",
+          "text": "by reference",
           "correct": true
         },
         {
-          "text": "number!"
+          "text": "by imitation"
         },
         {
-          "text": "number?"
+          "text": "by similarity"
         }
       ],
-      "explanation": "number[] is another way of writing Array<number> in TypeScript"
+      "explanation": "A variable assigned to an object stores not the object itself, but its “address in memory” – in other words “a reference” to it."
     },
     {
       "id": "f",
@@ -102,63 +102,63 @@
     },
     {
       "id": "g",
-      "questionText": "Which is NOT an access modifier?",
+      "questionText": "Which is NOT a primitive type?",
       "options": [
         {
-          "text": "private"
+          "text": "strings"
         },
         {
-          "text": "protected"
+          "text": "boolean"
+        },
+        {
+          "text": "numbers"
+        },
+        {
+          "text": "functions",
+          "correct": true
+        }
+      ],
+      "explanation": "Functions are first class objects hence they are not a primitive type"
+    },
+    {
+      "id": "h",
+      "questionText": "Which is NOT a type in TypeScript?",
+      "options": [
+        {
+          "text": "number"
+        },
+        {
+          "text": "float",
+          "correct": true
+        },
+        {
+          "text": "string"
+        },
+        {
+          "text": "boolean"
+        }
+      ],
+      "explanation": "Float is not a type in TypeScript. "
+    },
+    {
+      "id": "i",
+      "questionText": "Which modifier is used to prevent assignments outside of a class constructor",
+      "options": [
+        {
+          "text": "readonly",
+          "correct": true
+        },
+        {
+          "text": "private"
         },
         {
           "text": "public"
         },
         {
-          "text": "async",
-          "correct": true
+          "text": "inaccessible"
         }
       ],
-      "explanation": "async is not used as an access modifier type in TypeScript"
-    },
-    {
-      "id": "h",
-      "questionText": "Which keyword allows us to share information between files in TypeScript?",
-      "options": [
-        {
-          "text": "import"
-        },
-        {
-          "text": "export",
-          "correct": true
-        },
-        {
-          "text": "async"
-        },
-        {
-          "text": "constructor"
-        }
-      ],
-      "explanation": "the export keyword allows for the information to be transmitted between files"
-    },
-    {
-      "id": "i",
-      "questionText": "Which is an array method to generate a new array based on a condition?",
-      "options": [
-        {
-          "text": "filter",
-          "correct": true
-        },
-        {
-          "text": "map"
-        },
-        {
-          "text": "async"
-        },
-        {
-          "text": "enum"
-        }
-      ],
-      "explanation": "filter is a method used to conditionally create a new array"
+      "explanation": "readonly is a modifier used to outside of a class constructor"
     },
     {
       "id": "j",
@@ -179,6 +179,26 @@
         }
       ],
       "explanation": "this.propertyName is the way to access a specific property within a class"
+    },
+    {
+      "id": "i",
+      "questionText": "What clause is used to ensure that that a class satisfies a particular interface?",
+      "options": [
+        {
+          "text": "implements",
+          "correct": true
+        },
+        {
+          "text": "super"
+        },
+        {
+          "text": "accessors"
+        },
+        {
+          "text": "public"
+        }
+      ],
+      "explanation": "implements is used to ensure that a a class satisfies a particular interface"
     }
   ]
 }

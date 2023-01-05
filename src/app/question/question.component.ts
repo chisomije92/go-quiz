@@ -57,11 +57,12 @@ export class QuestionComponent implements OnInit {
       this.isQuizCompleted = true;
       this.stopCounter();
     }
+    ++this.questionsAttempted;
     this.isOptionSelected = true;
     if (this.selectedOption.correct) {
       this.points += 10;
       this.correctAnswer++;
-      this.questionsAttempted++;
+
       this.isOptionCorrect = true;
       setTimeout(() => {
         this.goToNextQuestion(currentQne);
@@ -69,8 +70,6 @@ export class QuestionComponent implements OnInit {
         this.getProgressStatus();
       }, 1000);
     } else {
-      this.questionsAttempted++;
-
       setTimeout(() => {
         this.wrongAnswer++;
         this.goToNextQuestion(currentQne);
@@ -78,7 +77,7 @@ export class QuestionComponent implements OnInit {
         this.getProgressStatus();
       }, 1000);
 
-      this.points -= 10;
+      this.points -= 5;
     }
 
     this.selectedOption = '';
