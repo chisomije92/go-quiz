@@ -47,14 +47,6 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  goToPreviousQuestion() {
-    if (this.currentQuestion <= 0) {
-      this.currentQuestion = 1;
-    } else {
-      this.currentQuestion--;
-    }
-  }
-
   selectOption(option: any) {
     this.selectedOption = option;
   }
@@ -117,6 +109,7 @@ export class QuestionComponent implements OnInit {
   }
 
   resetQuiz() {
+    this.isQuizCompleted = false;
     this.resetCounter();
     this.getAllQuestions();
     this.currentQuestion = 0;

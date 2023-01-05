@@ -6,7 +6,9 @@
       </div>
       <div class="quiz-header">
         <h4 style="font-family: cursive">This is GoQuiz!</h4>
-        <span style="font-style: italic">Welcome {{ name }}!</span>
+        <span style="font-style: italic" *ngIf="!isQuizCompleted"
+          >Welcome {{ name }}!</span
+        >
       </div>
     </div>
     <ng-container *ngIf="!isQuizCompleted">
@@ -70,27 +72,8 @@
       </div>
 
       <div class="d-flex justify-content-between">
-        <!--<button
-          [disabled]="currentQuestion == 0"
-          class="btn"
-          (click)="goToPreviousQuestion()"
-        >
-          <i
-            class="text-primary fa fa-chevron-left fa-3x"
-            aria-hidden="true"
-          ></i>
-        </button>
-        <button class="btn" (click)="resetQuiz()">
-          <i class="text-primary fa fa-refresh fa-3x" aria-hidden="true"></i>
-        </button>
-        <button class="btn" (click)="goToNextQuestion()">
-          <i
-            class="text-primary fa fa-chevron-right fa-3x"
-            aria-hidden="true"
-          ></i>
-        </button>-->
-
         <button
+          type="button"
           [disabled]="currentQuestion >= questionList.length"
           class="btn btn-dark btn-lg"
           (click)="submitAnswer(currentQuestion + 1)"
@@ -98,10 +81,11 @@
           Submit
         </button>
 
-        <button class="btn" (click)="resetQuiz()">
+        <button class="btn" type="button" (click)="resetQuiz()">
           <i class="text-danger fa fa-refresh fa-3x" aria-hidden="true"></i>
         </button>
         <button
+          type="button"
           class="btn btn-warning"
           (click)="goToNextQuestion(currentQuestion + 1)"
         >
@@ -117,16 +101,30 @@
           alt="confetti image"
           style="width: 40%"
           class="img-fluid col-sm-12 mx-auto"
+          *ngIf="points >= 40"
+        />
+        <img
+          src="/assets/fail-png.png"
+          alt="confetti image"
+          style="width: 40%"
+          class="img-fluid col-sm-12 mx-auto"
+          *ngIf="points < 40"
         />
         <div class="result text-center col-md-6 col-sm-12">
-          <h3>
-            Congratulations!! <br />
-            You have completed the quiz <br />Find your result below:
+          <h3 *ngIf="points >= 40" class="text-success">
+            Congratulations {{ name }}!! <br />
+            You passed the quiz. <br />Find your result below:
+          </h3>
+          <h3 *ngIf="points < 40" class="text-danger">
+            You did not pass the quiz.<br />Find your result below:
           </h3>
           <p>Total Question(s) Attempted: {{ questionsAttempted }}</p>
           <p>Correct Answers: {{ correctAnswer }}</p>
           <p>Wrong Answers: {{ wrongAnswer }}</p>
           <p>Your Score: {{ points }} Points</p>
+          <button class="btn btn-dark btn-lg" (click)="resetQuiz()">
+            Restart Quiz
+          </button>
         </div>
       </div>
     </ng-container>
