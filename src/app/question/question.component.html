@@ -43,9 +43,6 @@
         <ol *ngFor="let option of questionList[currentQuestion]?.options">
           <li (click)="selectOption(option)">
             <div
-              appChangeBg
-              [isCorrect]="option.correct"
-              #optionDiv
               class="card"
               [ngClass]="{ 'bg-info': selectedOption === option }"
             >
@@ -54,6 +51,24 @@
           </li>
         </ol>
       </div>
+      <div *ngIf="isOptionSelected" class="d-flex justify-content-center">
+        <p *ngIf="isOptionCorrect" class="fw-bold text-success mx-2 fs-5">
+          CORRECT!
+        </p>
+        <p *ngIf="!isOptionCorrect" class="fw-bold text-danger mx-2 fs-5">
+          WRONG!
+        </p>
+        <p
+          class="fw-bold"
+          [ngClass]="{
+            'text-success': isOptionCorrect,
+            'text-danger': !isOptionCorrect
+          }"
+        >
+          {{ questionList[currentQuestion]?.explanation }}
+        </p>
+      </div>
+
       <div class="d-flex justify-content-between">
         <!--<button
           [disabled]="currentQuestion == 0"
@@ -67,7 +82,14 @@
         </button>
         <button class="btn" (click)="resetQuiz()">
           <i class="text-primary fa fa-refresh fa-3x" aria-hidden="true"></i>
+        </button>
+        <button class="btn" (click)="goToNextQuestion()">
+          <i
+            class="text-primary fa fa-chevron-right fa-3x"
+            aria-hidden="true"
+          ></i>
         </button>-->
+
         <button
           [disabled]="currentQuestion >= questionList.length"
           class="btn btn-dark btn-lg"
@@ -75,6 +97,7 @@
         >
           Submit
         </button>
+
         <button class="btn" (click)="resetQuiz()">
           <i class="text-danger fa fa-refresh fa-3x" aria-hidden="true"></i>
         </button>
