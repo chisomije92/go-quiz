@@ -1,3 +1,5 @@
+import { QuestionModel } from './../models/question.model';
+import { OptionModel } from './../models/option.model';
 import { QuestionService } from './../services/question.service';
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
@@ -9,11 +11,11 @@ import { interval } from 'rxjs';
 })
 export class QuestionComponent implements OnInit {
   name: string | null = '';
-  selectedOption: any;
-  questionList: any = [];
+  selectedOption: OptionModel | null = null;
+  questionList!: QuestionModel[];
   currentQuestion: number = 0;
   points: number = 0;
-  counter: number = 60;
+  counter: number = 40;
   correctAnswer: number = 0;
   wrongAnswer: number = 0;
   interval$: any;
@@ -38,8 +40,10 @@ export class QuestionComponent implements OnInit {
   }
 
   goToNextQuestion(currentQne: number) {
-    if (currentQne === this.questionList.length) {
-      this.isQuizCompleted = true;
+    if (currentQne === this.questionList?.length) {
+      setTimeout(() => {
+        this.isQuizCompleted = true;
+      }, 1000);
     } else {
       this.isOptionCorrect = false;
       this.isOptionSelected = false;
@@ -48,18 +52,18 @@ export class QuestionComponent implements OnInit {
     }
   }
 
-  selectOption(option: any) {
+  selectOption(option: OptionModel) {
     this.selectedOption = option;
   }
 
-  submitAnswer(currentQne: any) {
-    if (currentQne === this.questionList.length) {
+  submitAnswer(currentQne: number) {
+    if (currentQne === this.questionList?.length) {
       this.isQuizCompleted = true;
       this.stopCounter();
     }
     ++this.questionsAttempted;
     this.isOptionSelected = true;
-    if (this.selectedOption.correct) {
+    if (this.selectedOption?.correct) {
       this.points += 10;
       this.correctAnswer++;
 
@@ -80,7 +84,7 @@ export class QuestionComponent implements OnInit {
       this.points -= 5;
     }
 
-    this.selectedOption = '';
+    this.selectedOption = null;
   }
 
   startCounter() {
@@ -88,8 +92,12 @@ export class QuestionComponent implements OnInit {
       this.counter--;
       if (this.counter === 0) {
         this.currentQuestion++;
-        this.counter = 60;
+        this.counter = 40;
         this.points -= 10;
+      }
+      if (this.currentQuestion === this.questionList?.length) {
+        this.stopCounter();
+        this.isQuizCompleted = true;
       }
     });
     setTimeout(() => {
@@ -104,7 +112,7 @@ export class QuestionComponent implements OnInit {
 
   resetCounter() {
     this.stopCounter();
-    this.counter = 60;
+    this.counter = 40;
     this.startCounter();
   }
 
@@ -114,13 +122,13 @@ export class QuestionComponent implements OnInit {
     this.getAllQuestions();
     this.currentQuestion = 0;
     this.points = 0;
-    this.counter = 60;
+    this.counter = 40;
     this.progress = '0';
   }
 
   getProgressStatus() {
     this.progress = (
-      (this.currentQuestion / this.questionList.length) *
+      (this.currentQuestion / this.questionList!.length) *
       100
     ).toString();
     return this.progress;

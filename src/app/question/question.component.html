@@ -48,11 +48,11 @@
       </div>
       <div class="question">
         <div class="card">
-          <h3>{{ questionList[currentQuestion]?.questionText }}</h3>
+          <h3>{{ questionList[currentQuestion].questionText }}</h3>
         </div>
       </div>
       <div class="options">
-        <ol *ngFor="let option of questionList[currentQuestion]?.options">
+        <ol *ngFor="let option of questionList[currentQuestion].options">
           <li (click)="selectOption(option)">
             <div
               class="card"
@@ -77,7 +77,7 @@
             'text-danger': !isOptionCorrect
           }"
         >
-          {{ questionList[currentQuestion]?.explanation }}
+          {{ questionList[currentQuestion].explanation }}
         </p>
       </div>
 
