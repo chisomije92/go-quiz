@@ -43,6 +43,7 @@ export class QuestionComponent implements OnInit {
     } else {
       this.isOptionCorrect = false;
       this.isOptionSelected = false;
+      this.resetCounter();
       this.currentQuestion++;
     }
   }
