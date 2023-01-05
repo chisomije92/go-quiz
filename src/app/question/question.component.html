@@ -132,7 +132,11 @@
           <p>Correct Answers: {{ correctAnswer }}</p>
           <p>Wrong Answers: {{ wrongAnswer }}</p>
           <p>Your Score: {{ points }} Points</p>
-          <button class="btn btn-dark btn-lg" (click)="resetQuiz()">
+          <button
+            type="button"
+            class="btn btn-dark btn-lg"
+            (click)="resetQuiz()"
+          >
             Restart Quiz
           </button>
         </div>

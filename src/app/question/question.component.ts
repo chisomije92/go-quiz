@@ -33,9 +33,19 @@ export class QuestionComponent implements OnInit {
     this.startCounter();
   }
 
+  shuffleArray = (array: QuestionModel[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  };
+
   getAllQuestions() {
     this.questionService.getQuestionJson().subscribe((res) => {
-      this.questionList = res.questions;
+      this.questionList = this.shuffleArray(res.questions);
     });
   }
 
