@@ -1,4 +1,5 @@
 # GoQuiz
+![go-quiz web screenshot](https://user-images.githubusercontent.com/68636386/211062932-37e6d5f5-f008-457f-8c7b-2cc07bb3bc04.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
