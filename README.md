@@ -49,7 +49,7 @@ I gained knowledge and practical experience with the use of the following:
 My implementation of this project was possible thanks to the knowledge acquired from the resources below:
 
 - [Angular - The Complete Guide (2023 Edition)](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
-- [Building a Quiz App with Angular](https://www.youtube.com/watch?v=ITPjL7L4sqU)
+
 
 ## Author
 
