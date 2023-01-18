@@ -17,7 +17,7 @@ import { ChangeBgDirective } from './change-bg.directive';
     HeaderComponent,
     ChangeBgDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

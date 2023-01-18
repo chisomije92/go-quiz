@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',
@@ -7,11 +8,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
   @ViewChild('name') nameInput!: ElementRef;
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformID: any) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   startQuiz() {
-    localStorage.setItem('name', this.nameInput.nativeElement.value);
+    if (isPlatformBrowser(this.platformID)) {
+      localStorage.setItem('name', this.nameInput.nativeElement.value);
+    }
+
   }
 }
