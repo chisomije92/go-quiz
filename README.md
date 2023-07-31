@@ -21,7 +21,7 @@ This simple web app tests a user on their knowledge of Javascript and TypeScript
 
 ### Links
 
-- Repo: [Github repo]([https://github.com/chisomije92/pizza-order-app](https://github.com/chisomije92/go-quiz))
+- Repo: [Github repo](https://github.com/chisomije92/go-quiz)
 - Live Site URL: [Netlify Web Url](https://goquize.netlify.app/)
 
 
